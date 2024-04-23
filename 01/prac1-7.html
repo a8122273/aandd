@@ -13,9 +13,20 @@
             var numbers = [];
             //prac1-7 1からNまでの数を順にN個挿入する関数を作る
             //関数名：createSequentialNumbers(array, n)
+            function createSraquentionalNumbers(array, n){
+                for(var i=0; i<n; i++){
+                numbers.push(i);
+            }
+            }
+            
             //できたら，関数定義をaandd.jsに移す
             //prac1-8 N個の乱数を挿入する関数を作る
             //関数名：createRandomNumbers(array, n)
+        function createRandomNumbers(array, n){
+            for (var j=0; j<n; j++){
+                numbers.push(Math.floor(Math.random()*10));
+            }
+        }
             //できたら，関数定義をaandd.jsに移す
             show(numbers);
         }
