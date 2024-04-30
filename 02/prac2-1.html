@@ -15,8 +15,10 @@
             for (var i = 1; i < 11; i++) {
                 numbers.push(i);
             }
+            var tmp = numbers[1];
+
             numbers[1] = numbers[3];
-            numbers[3] -= 2;
+            numbers[3] = tmp;
             show(numbers);
         }
     </script>
