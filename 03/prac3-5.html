@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function button1Pressed() {
+            devite();
+        }
+
+        function devite() {
+            var text_words = document.getElementById('tf1').value;
+            console.log(text_words.length);
+            let words_list = text_words.split('', text_words.length);
+            console.log(words_list);
+            for (var i = 0; i < text_words.length / 2; i++) {
+                var text_word = words_list[i];
+                words_list[i] = words_list[text_words.length - 1 - i]
+                words_list[text_words.length - 1 - i] = text_word;
+                ;
+            }
+            show(words_list);
+
+            //var html = '';
+            // html = html + '</table>';
+            //document.getElementById('result').innerHTML = html;
+        }
+    </script>
+
+</head>
+
+<body>
+    <p>prac3-5</p>
+    <input id="tf1" type="textfield">
+    <button onclick="button1Pressed()">X</button>
+    <hr>
+    <p id="res"></p>
+</body>
+
+</html>
