@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            //prac2-2 10個の順数を生成し，n番目とm番目を入れ替える
+            var a = Math.floor(Math.random() * 10);
+            var b = Math.floor(Math.random() * 10);
+            console.log(a);
+            console.log(b);
+            numbers = [];
+            createSraquentionalNumbers(numbers, 10);
+            var tmp = numbers[a];
+
+            numbers[a] = numbers[b];
+            numbers[b] = tmp;
+            show(numbers);
+
+
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>prac2</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
