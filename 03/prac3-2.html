@@ -10,7 +10,7 @@
 
     <script>
         function runButtonPressed() {
-            //prac3-1 10個の乱数の合計を求める（繰り返しで）
+            //prac3-2 10個の乱数の平均を求める
             total = 0;
             var numbers = [];
             createRandomNumbers(numbers, 10);
@@ -18,7 +18,9 @@
             for (i = 0; i < 10; i++) {
                 total += numbers[i];
             }
-            show(total);
+            var avarage = total / 10;
+            show(avarage);
+
         }
     </script>
 

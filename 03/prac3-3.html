@@ -10,15 +10,20 @@
 
     <script>
         function runButtonPressed() {
-            //prac3-1 10個の乱数の合計を求める（繰り返しで）
-            total = 0;
+            //prac3-3 10個の乱数の最大値を求める
+
             var numbers = [];
             createRandomNumbers(numbers, 10);
             show(numbers);
+            var tmp = 0;
             for (i = 0; i < 10; i++) {
-                total += numbers[i];
+                if (tmp <= numbers[i]) {
+                    tmp = numbers[i];
+                }
+
             }
-            show(total);
+            show(tmp);
+
         }
     </script>
 
