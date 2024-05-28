@@ -9,24 +9,99 @@
     <script type="text/javascript" src="../jquery.min.js"></script>
 
     <script>
+        var numbers = [];
         function runButtonPressed() {
-            var numbers = [];
-            createOrderedRandomNumbers(numbers, 100);
-            var startTime = new Date();
-            //処理            
-            //ここに，並び替えのプログラムを書く
-            //処理終わり
-            var endTime = new Date();
-            var time = endTime - startTime;
-            show(time + 'ミリ秒');
+            numbers = [];
+            createRandomNumbers(numbers, 5);
+            show(numbers);
         }
+
+        function AButtonPressed() {
+            bubuleSort(numbers);
+
+        }
+
+        function BButtonPressed() {
+            selectSort(numbers);
+        }
+
+        function CButtonPressed() {
+            insertSort();
+        }
+
+        function bubuleSort(array) {
+            for (var j = 0; j < array.length - 1; j++) {
+                for (var i = 0; i < array.length - 1; i++) {
+                    var number = array[i];
+                    if (number > array[i + 1]) {
+                        var tmp = number;
+                        array[i] = array[i + 1];
+                        array[i + 1] = tmp;
+                        show(array);
+                    }
+                }
+            }
+
+
+        }
+        function selectSort(array) {
+
+            for (var j = 0; j < array.length; j++) {
+                var number_1 = 0;
+                var tmp = array[j];
+                //最小値を見つける    
+                for (var i = j; i < array.length; i++) {
+                    if (array[i] <= tmp) {
+                        tmp = array[i];
+                        number_1 = i;
+                    }
+                }
+                console.log(number_1);
+                console.log("最小値：" + tmp);
+                //最小値を前に持ってくる
+
+                array[number_1] = array[j]
+                array[j] = tmp;
+
+                show(array);
+            }
+        }
+
+        function insertSort() {
+            var sort_list = [];
+            //sort_list.push(array[0]);
+            for (var i = 0; i < numbers.length; i++) {
+                var number = numbers[i];
+                console.log(sort_list);
+                for (var j = 0; j < sort_list.length; j++) {
+                    if (number <= sort_list[j]) {
+                        // if (sort_list.length - j == 1) {
+                        //   sort_list.push(number);
+                        //}
+                        for (var k = 0; k < sort_list.length - j; k++) {
+                            sort_list[sort_list.length - k] = sort_list[sort_list.length - k - 1];
+                        }
+
+                        break;
+                    }
+
+                }
+                sort_list[j] = number;
+
+            }
+            show(sort_list);
+        }
+
     </script>
 
 </head>
 
 <body>
     <h1>時間の測定</h1>
-    <button onclick="runButtonPressed()">run!</button>
+    <button onclick="runButtonPressed()">リストを生成</button>
+    <button onclick="AButtonPressed()">バブルソート</button>
+    <button onclick="BButtonPressed()">選択ソート</button>
+    <button onclick="CButtonPressed()">挿入ソート</button>
     <p id="res"></p>
 </body>
 
