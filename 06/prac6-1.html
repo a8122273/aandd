@@ -16,15 +16,27 @@
             show(chars);
             var chars_reverse = [];
             var text_chars = "";
-            var number_length = chars.length
-            for (var i = 0; i < number_length; i++) {
+
+            for (var i = 0; i < text.length; i++) {
                 text_chars = chars.pop();
                 chars_reverse.push(text_chars);
             }
             show(chars_reverse);
             var text2 = chars_reverse.join('');
             show(text2);
+            kaibunCheck(text, text2);
         }
+
+        function kaibunCheck(text, text2) {
+            if (text == text2) {
+                show("回文です");
+            }
+            else {
+                show("回文ではありません");
+            }
+        }
+
+
 
     </script>
 
@@ -34,6 +46,7 @@
     <h1>split</h1>
     <input id="tf1" type="text" value="">
     <button onclick="runButtonPressed()">run!</button>
+
     <p id="res"></p>
 </body>
 
