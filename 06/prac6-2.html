@@ -20,15 +20,25 @@
             nouns = nounstext.split('\n');
             verbs = verbstext.split('\n');
         });
-
         function runButtonPressed() {
+            var staus = false;
+            while (staus == false) {
+                var text = make_sakubun();
+                console.log(text);
+                var text2 = text_reverce(text);
+                if (text == text2) {
+                    show(text2);
+                    staus = true;
+                }
+            }
+        }
+        function make_sakubun() {
             var noun = selectone(nouns);
             var verb = selectone(verbs);
             var text = noun + "ハ" + verb;
-            show(text);
-            for (var i = 0; i < 1000; i++) {
-                text_reverce(text);
-            }
+            //show(text);
+            //console.log(text);
+            return text;
         }
 
         function selectone(array) {
@@ -39,27 +49,22 @@
 
         function text_reverce(text) {
             var chars = text.split('');
-            show(chars);
+            //show(chars);
             var chars_reverse = [];
             var text_chars = "";
             for (var i = 0; i < text.length; i++) {
                 text_chars = chars.pop();
                 chars_reverse.push(text_chars);
             }
-            show(chars_reverse);
+            //show(chars_reverse);
             var text2 = chars_reverse.join('');
-            show(text2);
-            kaibunCheck(text, text2);
+            //show(text2);
+            return text2;
         }
 
-        function kaibunCheck(text, text2) {
-            if (text == text2) {
-                show("回文です");
-            }
-            else {
-                show("回文ではありません");
-            }
-        }
+
+
+
 
 
     </script>
