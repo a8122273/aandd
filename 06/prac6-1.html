@@ -12,11 +12,11 @@
         function runButtonPressed() {
             var text = document.getElementById('tf1').value;
             show(text);
-            var text2 = Hanten(text);
-            kaibunCheck(text, text2);
+            kaibunCheck(text);
         }
 
-        function kaibunCheck(text, text2) {
+        function kaibunCheck(text) {
+            var text2 = Hanten(text);
             if (text == text2) {
                 show("回文です");
             }
@@ -37,6 +37,7 @@
             show(chars_reverse);
             var text2 = chars_reverse.join('');
             show(text2);
+            return text2;
         }
 
 
