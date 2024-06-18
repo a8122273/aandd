@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var virtual = {};
+
+        $().ready(function () {
+            virtual['こんにちは'] = 'はい、こんにちは';
+            virtual['おはよう'] = 'はい、みかん食べてね';
+        });
+
+        function PutButtonPressed() {
+            var put_words = document.getElementById('tf1').value;
+            //var japanese_register = document.getElementById('tf4').value;
+            if (virtual[put_words] == undefined) {
+                document.getElementById('res').innerHTML = 'その言葉は登録されていません';
+            } else {
+                var output_words = virtual[put_words];
+                document.getElementById('tf2').value = output_words;
+            }
+        }
+
+        function runButtonPressed() {
+            var input_word = document.getElementById('tf1').value;
+            var output_word = document.getElementById('tf3').value;
+            virtual[input_word] = output_word;
+        }
+        function saveButtonPressed() {
+            localStorage.setItem('ObjectX', JSON.stringify(virtual));
+        }
+
+
+        function loadButtonPressed() {
+            var loadstr = localStorage.getItem('ObjectX');
+            loaded = JSON.parse(loadstr);
+            console.log(loaded);
+            virtual = loaded;
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>バーチャルチャット</h1>
+    入力：<input id="tf1" type="text" value="">
+    <button onclick="PutButtonPressed()">入力!</button>
+    <br>
+    コンピュータの答え：<input id="tf2" type="text" value="">
+    <br>
+    <p id="res"></p>
+    <br>
+    登録：<input id="tf3" type="text" value="">
+    <button onclick="runButtonPressed()">登録！</button>
+
+    <h1>save and load</h1>
+    <button onclick="saveButtonPressed()">save!</button>
+    <button onclick="loadButtonPressed()">load!</button>
+    <p id="res1"></p>
+</body>
+
+</html>
