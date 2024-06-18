@@ -17,11 +17,12 @@
         });
 
         function saveButtonPressed() {
-            localStorage.setItem('ObjectX', fruits);
+            localStorage.setItem('ObjectX', JSON.stringify(fruits));
         }
 
         function loadButtonPressed() {
-            var loaded = localStorage.getItem('ObjectX');
+            var loadstr = localStorage.getItem('ObjectX');
+            loaded = JSON.parse(loadstr);
             console.log(loaded);
         }
 
