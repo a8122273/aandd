@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        var image_search = {};
+
+        $().ready(function () {
+            image_search['りんご'] = 'https://media.delishkitchen.tv/article/975/fd3sgtfnxen.jpeg?version=1634782151://www.google.com/search?sca_esv=ea1f1f1586db5291&sca_upv=1&q=%E3%81%BF%E3%81%8B%E3%82%93&udm=2&fbs=AEQNm0Dq8FrCQIbALoMfOq0bxUcHfaJBVs3OSFIDWxa1MpyOiSUa6nTxsXQT3N8NgA4KoEl_VKxylH5C3p1ugLMH5emxuTf4Whmekj7sdrBAYZUzFfThWpCAljrqxSxqdW6REI36m0Gng2-WDpEyq2uYQFBkm6rKwrDb3v4BWJ5SOcIeusEsoMYAfoDt_CfBuJ4AVl1sXx8AZ_JAmWnd52UmqyARIwKAzGdeK9VGL9PSQaQBMI3jJNM&sa=X&ved=2ahUKEwiw-Pb17eSGAxW_oK8BHZxzAzEQtKgLegQIChAB&biw=1470&bih=799&dpr=2#vhid=cNmv3YOMR5EaGM&vssid=mosaic';
+            image_search['みかん'] = 'https://https://video.kurashiru.com/production/articles/35d5215c-a922-496b-8a8b-273d2215320b/wide_thumbnail_normal.jpg?1700538093.google.com/search?q=%E3%82%8A%E3%82%93%E3%81%94&sca_esv=ea1f1f1586db5291&sca_upv=1&udm=2&biw=1470&bih=799&ei=BVZxZpanOMGavr0PjOqhiAg&ved=0ahUKEwjWve_27eSGAxVBja8BHQx1CIEQ4dUDCBA&uact=5&oq=%E3%82%8A%E3%82%93%E3%81%94&gs_lp=Egxnd3Mtd2l6LXNlcnAiCeOCiuOCk-OBlDIFEAAYgAQyCBAAGIAEGLEDMggQABiABBixAzIIEAAYgAQYsQMyCBAAGIAEGLEDMggQABiABBixAzILEAAYgAQYsQMYgwEyCBAAGIAEGLEDMgoQABiABBixAxgEMgoQABiABBixAxgESOEjUKIEWO0fcAh4AJABAJgBggGgAZcHqgEDNy4zuAEDyAEA-AEBmAIPoAK4BqgCAMICBxAAGIAEGATCAgQQABgDwgIQEAAYgAQYsQMYgwEYBBiKBcICBhAAGAMYBJgDAZIHBDEzLjKgB8Ed&sclient=gws-wiz-serp#vhid=XDIPZYQiReWTkM&vssid=mosaic';
+        });
+
+        function PutButtonPressed() {
+            var put_words = document.getElementById('tf1').value;
+            if (image_search[put_words] == undefined) {
+                document.getElementById('res1').innerHTML = 'その言葉は登録されていません';
+            } else {
+                var output_words = image_search[put_words];
+                document.getElementById('res').src = output_words;
+            }
+        }
+
+        function runButtonPressed() {
+            var input_word = document.getElementById('tf1').value;
+            var output_URL = document.getElementById('tf3').value;
+            image_search[input_word] = output_URL;
+            document.getElementById('tf3').value = "";
+        }
+        function saveButtonPressed() {
+            localStorage.setItem('ObjectX', JSON.stringify(image_search));
+        }
+
+
+        function loadButtonPressed() {
+            var loadstr = localStorage.getItem('ObjectX');
+            loaded = JSON.parse(loadstr);
+            console.log(loaded);
+            image_search = loaded;
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>絵辞書</h1>
+    入力：<input id="tf1" type="text" value="">
+    <button onclick="PutButtonPressed()">入力!</button>
+    <br>
+    コンピュータの答え：
+    <br>
+    <img src="" width=400 height=300 id="res"></img>
+    <p id="res1"></p>
+    <br>
+    URL：<input id="tf3" type="text" value="">
+    <button onclick="runButtonPressed()">登録！</button>
+
+    <h1>save and load</h1>
+    <button onclick="saveButtonPressed()">save!</button>
+    <button onclick="loadButtonPressed()">load!</button>
+
+</body>
+
+</html>
